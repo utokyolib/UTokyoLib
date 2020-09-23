@@ -28,6 +28,6 @@ jobs:
       - name: installation
         run: poetry install
       - name: test
-        run: python -m unittest
+        run: poetry run python -m unittest
       - name: tweet
-        run: python main.py
+        run: poetry run python main.py
