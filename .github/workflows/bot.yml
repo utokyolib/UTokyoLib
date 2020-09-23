@@ -1,0 +1,33 @@
+name: Bot
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: '0 22 * * *'
+
+jobs:
+  ci:
+    strategy:
+      fail-fast: false
+
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Run image
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: 1.0
+      - name: installation
+        run: poetry install
+      - name: test
+        run: python -m unittest
+      - name: tweet
+        run: python main.py
