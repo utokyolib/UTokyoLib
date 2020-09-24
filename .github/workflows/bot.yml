@@ -38,3 +38,20 @@ jobs:
           TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
         if: ${{ github.event_name == 'schedule' }}
         run: poetry run python main.py
+
+        
+      - name: Slack Notification on Success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_CHANNEL: ci
+          SLACK_TITLE: Test Success
+          SLACK_COLOR: good
+
+      - name: Slack Notification on Failure
+        uses: rtCamp/action-slack-notify@v2.0.2
+        if: failure()
+        env:
+          SLACK_CHANNEL: ci
+          SLACK_TITLE: Test Failure
+          SLACK_COLOR: danger
