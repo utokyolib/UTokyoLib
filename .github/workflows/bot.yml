@@ -39,8 +39,10 @@ jobs:
         if: ${{ github.event_name == 'schedule' }}
         run: poetry run python main.py
 
-        
+
       - name: Slack Notification on Success
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
         if: success()
         uses: rtCamp/action-slack-notify@v2.0.2
         env:
@@ -49,6 +51,8 @@ jobs:
           SLACK_COLOR: good
 
       - name: Slack Notification on Failure
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
         uses: rtCamp/action-slack-notify@v2.0.2
         if: failure()
         env:
