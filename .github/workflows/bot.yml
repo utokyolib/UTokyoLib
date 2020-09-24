@@ -44,7 +44,7 @@ jobs:
 
       - name: Slack Notification on Success
         if: success()
-        uses: rtCamp/action-slack-notify@v2.0.2
+        uses: rtCamp/action-slack-notify@master
         env:
           SLACK_CHANNEL: ci
           SLACK_TITLE: Test Success
@@ -52,7 +52,7 @@ jobs:
 
       - name: Slack Notification on Failure
         if: failure()
-        uses: rtCamp/action-slack-notify@v2.0.2
+        uses: rtCamp/action-slack-notify@master
         env:
           SLACK_CHANNEL: ci
           SLACK_TITLE: Test Failure
