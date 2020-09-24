@@ -48,17 +48,17 @@ jobs:
         with:
           text: Success
           attachments: |
-          [
-            {
-              "color": "good",
-              "fields": [
-                {
-                  "title": "GitHub Actions URL",
-                  "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
-                }
-              ]
-            }
-          ]
+            [
+              {
+                "color": "good",
+                "fields": [
+                  {
+                    "title": "GitHub Actions URL",
+                    "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                  }
+                ]
+              }
+            ]
 
       - name: Slack Notification on Failure
         if: failure()
@@ -66,14 +66,14 @@ jobs:
         with:
           text: Failure
           attachments: |
-          [
-            {
-              "color": "danger",
-              "fields": [
-                {
-                  "title": "GitHub Actions URL",
-                  "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
-                }
-              ]
-            }
-          ]
+            [
+              {
+                "color": "danger",
+                "fields": [
+                  {
+                    "title": "GitHub Actions URL",
+                    "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                  }
+                ]
+              }
+            ]
