@@ -47,9 +47,33 @@ jobs:
         uses: tokorom/action-slack-incoming-webhook@master
         with:
           text: Success
+          attachments: |
+          [
+            {
+              "color": "good",
+              "fields": [
+                {
+                  "title": "GitHub Actions URL",
+                  "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                }
+              ]
+            }
+          ]
 
       - name: Slack Notification on Failure
         if: failure()
         uses: tokorom/action-slack-incoming-webhook@master
         with:
           text: Failure
+          attachments: |
+          [
+            {
+              "color": "danger",
+              "fields": [
+                {
+                  "title": "GitHub Actions URL",
+                  "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                }
+              ]
+            }
+          ]
