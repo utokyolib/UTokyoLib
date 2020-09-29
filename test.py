@@ -15,7 +15,7 @@ class TestLibraryMethods(unittest.TestCase):
     # 駒場図書館
     def test_komaba(self):
         self.assertEqual(
-            ("短縮開館（駒I所属者のみ）", "10:00-20:00"),
+            ("短縮開館（本学在籍者のみ）", "10:00-20:00"),
             library.fetch_opening_info(300300, year=2020, month=9, day=24)
         )
 
