@@ -22,6 +22,6 @@ class TestLibraryMethods(unittest.TestCase):
     # 柏図書館
     def test_kashiwa(self):
         self.assertEqual(
-            ("短縮開館(学内在籍者のみ利用可)", "9:00-17:00"),
+            ("短縮開館(本学在籍者のみ利用可)", "9:00-17:00"),
             library.fetch_opening_info(500840, year=2020, month=9, day=24)
         )
