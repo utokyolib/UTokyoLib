@@ -37,6 +37,8 @@ jobs:
       - name: Test
         run: poetry run python -m unittest
         continue-on-error: true
+      - name: Favorite
+        run: poetry run python favorite.py
       - name: Tweet
         if: ${{ github.event_name == 'schedule' }}
         run: poetry run python main.py
