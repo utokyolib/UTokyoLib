@@ -44,9 +44,9 @@ for tweet in komaba_tweets:
 
 
 # 「本郷 図書館」で検索
-komaba_tweets = twitter.search("本郷 図書館", result_type="recent")
+hongo_tweets = twitter.search("本郷 図書館", result_type="recent")
 
-for tweet in komaba_tweets:
+for tweet in hongo_tweets:
 
     # 既にファボしていたら skip する
     if tweet.favorited:
@@ -73,9 +73,9 @@ for tweet in komaba_tweets:
 
 
 # 「総合図書館」で検索
-komaba_tweets = twitter.search("総合図書館", result_type="recent")
+sogo_tweets = twitter.search("総合図書館", result_type="recent")
 
-for tweet in komaba_tweets:
+for tweet in sogo_tweets:
 
     # 既にファボしていたら skip する
     if tweet.favorited:
