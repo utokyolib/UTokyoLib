@@ -70,3 +70,32 @@ for tweet in komaba_tweets:
         logging.info(tweet.text)
     except tweepy.error.TweepError as e:
         logging.info(e)
+
+
+# 「総合図書館」で検索
+komaba_tweets = twitter.search("総合図書館", result_type="recent")
+
+for tweet in komaba_tweets:
+
+    # 既にファボしていたら skip する
+    if tweet.favorited:
+        continue
+
+    # URL を含むツイートは対象外にする
+    if tweet.entities["urls"]:
+        continue
+
+    # リプライは対象外にする
+    if tweet.in_reply_to_status_id or tweet.in_reply_to_user_id:
+        continue
+
+    # 自分自身のツイートは対象外にする
+    if tweet.user.screen_name == "UTokyoLib_bot":
+        continue
+
+    try:
+        twitter.create_favorite(tweet.id)
+        logging.info(f"{tweet.user.screen_name} さんによる以下のツイートをファボしました: ")
+        logging.info(tweet.text)
+    except tweepy.error.TweepError as e:
+        logging.info(e)
