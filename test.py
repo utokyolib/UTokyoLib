@@ -5,9 +5,9 @@ import library
 
 class TestLibraryMethods(unittest.TestCase):
 
-    test_year  = 2021
+    test_year = 2021
     test_month = 4
-    test_day   = 22
+    test_day = 22
 
     # 総合図書館
     def test_sogo(self):

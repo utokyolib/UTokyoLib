@@ -1,8 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 class LibraryError(Exception):
     pass
+
 
 def fetch_opening_info(libraryType, year=None, month=None, day=None):
     if year and month:
@@ -12,7 +14,6 @@ def fetch_opening_info(libraryType, year=None, month=None, day=None):
 
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'lxml')
-
 
     style = None
 
@@ -25,7 +26,6 @@ def fetch_opening_info(libraryType, year=None, month=None, day=None):
     if not style:
         raise LibraryError("開館時間の style が見つかりません")
 
-    
     opening_type = None
     opening_info = None
 
@@ -37,7 +37,6 @@ def fetch_opening_info(libraryType, year=None, month=None, day=None):
             opening_type = td_list[0].get_text().strip()
             opening_info = td_list[1].get_text().strip()
             break
-
 
     if opening_type and opening_info:
         return (opening_type, opening_info)
