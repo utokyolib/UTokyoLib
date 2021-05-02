@@ -42,6 +42,9 @@ jobs:
       - name: Tweet
         if: ${{ github.event_name == 'schedule' }}
         run: poetry run python main.py
+      - name: Retweet
+        if: ${{ github.event_name == 'schedule' }}
+        run: poetry run python retweet.py
 
 
       - name: Slack Notification on Success

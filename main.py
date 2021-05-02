@@ -40,7 +40,7 @@ for (library_name, library_num) in libdic:
 
     tweet_content = \
         f"{MONTH}/{DAY}({WEEKDAY}) {library_name}\n\n【{opening_type}】\n{opening_info}\n\n" + \
-        "※必ず公式ホームページ https://www.lib.u-tokyo.ac.jp/ja も確認してください。"
+        "※実際の日付と異なる場合があります。必ず https://www.lib.u-tokyo.ac.jp/ja もご確認ください。"
     twitter.update_status(tweet_content)
 
     logging.info(f"{library_name} done!")
