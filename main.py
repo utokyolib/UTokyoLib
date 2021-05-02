@@ -39,7 +39,8 @@ for (library_name, library_num) in libdic:
         = library.fetch_opening_info(library_num, year=YEAR, month=MONTH, day=DAY)
 
     tweet_content = \
-        f"{MONTH}/{DAY}({WEEKDAY}) {library_name}\n\n【{opening_type}】\n{opening_info}"
+        f"{MONTH}/{DAY}({WEEKDAY}) {library_name}\n\n【{opening_type}】\n{opening_info}\n\n" + \
+        "※必ず公式ホームページ https://www.lib.u-tokyo.ac.jp/ja も確認してください。"
     twitter.update_status(tweet_content)
 
     logging.info(f"{library_name} done!")
