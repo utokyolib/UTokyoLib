@@ -23,13 +23,7 @@ tweets = [tweet for tweet in tweets if tweet.user.screen_name != "UTokyoLib_bot"
 tweets = [tweet for tweet in tweets if tweet.created_at >= datetime.today() - timedelta(days=7)]
 
 # 開館に関するツイートに絞る
-tweets = [tweet for tweet in tweets
-          if "開館" in tweet.text or
-          "閉館" in tweet.text or
-          "入館" in tweet.text or
-          "開室" in tweet.text or
-          "閉室" in tweet.text or
-          "入室" in tweet.text]
+tweets = [tweet for tweet in tweets if "開館" in tweet.text or "開室" in tweet.text]
 
 
 for tweet in tweets:
