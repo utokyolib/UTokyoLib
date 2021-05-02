@@ -39,6 +39,9 @@ for query in queries:
         # リプライは対象外にする
         if tweet.in_reply_to_status_id or tweet.in_reply_to_user_id:
             continue
+        if hasattr(tweet, "retweeted_status") and \
+                (tweet.retweeted_status.in_reply_to_status_id or tweet.retweeted_status.in_reply_to_user_id):
+            continue
 
         # 自分自身のツイートは対象外にする
         if tweet.user.screen_name == "UTokyoLib_bot":
