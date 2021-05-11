@@ -25,6 +25,8 @@ tweets = [tweet for tweet in tweets if tweet.created_at >= datetime.today() - ti
 # 開館に関するツイートに絞る
 tweets = [tweet for tweet in tweets if "開館" in tweet.text or "開室" in tweet.text]
 
+# 最近の RT が上に来るようにする
+tweets.reverse()
 
 for tweet in tweets:
     try:
