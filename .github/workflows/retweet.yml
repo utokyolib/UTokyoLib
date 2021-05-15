@@ -1,4 +1,4 @@
-name: Bot (daily)
+name: Retweet 
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '0 22 * * *' # 日本時間 7時
+    - cron: '0 0-9 * * *' # 日本時間 9時~18時
 
 env:
   TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
@@ -33,22 +33,6 @@ jobs:
           poetry-version: 1.0
       - name: Installation
         run: poetry install
-      - name: Test
-        run: poetry run python -m unittest
-        continue-on-error: true
-      - name: Favorite
-        run: poetry run python favorite.py
-      - name: Tweet
+      - name: Retweet
         if: ${{ github.event_name == 'schedule' }}
-        run: poetry run python main.py
-
-      - name: Commit Files
-        if: ${{ github.event_name == 'push' }}
-        run: |
-          bash update.sh
-          git add -A
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          now=`TZ=JST-9 date`
-          git commit -m "${now}"
-          git push
+        run: poetry run python retweet.py
