@@ -43,6 +43,7 @@ jobs:
         run: poetry run python main.py
 
       - name: Commit Files
+        if: ${{ github.event_name == 'push' }}
         run: |
           bash update.sh
           git add -A
