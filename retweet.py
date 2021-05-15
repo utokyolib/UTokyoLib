@@ -19,19 +19,17 @@ tweets = twitter.home_timeline(count=200)
 # 自分自身のツイートは対象外にする
 tweets = [tweet for tweet in tweets if tweet.user.screen_name != "UTokyoLib_bot"]
 
-# 1週間前以降のツイートに絞る
-tweets = [tweet for tweet in tweets if tweet.created_at >= datetime.today() - timedelta(days=7)]
+# 5時間以内のツイートに絞る
+tweets = [tweet for tweet in tweets if tweet.created_at >= datetime.today() - timedelta(hours=5)]
 
-# 開館に関するツイートに絞る
-tweets = [tweet for tweet in tweets if "開館" in tweet.text or "開室" in tweet.text]
+# 開館・閉館に関するツイートに絞る
+tweets = [tweet for tweet in tweets if "開館" in tweet.text or "開室" in tweet.text or "閉館" in tweet.text or "閉室" in tweet.text]
 
 # 最近の RT が上に来るようにする
 tweets.reverse()
 
 for tweet in tweets:
     try:
-        if tweet.retweeted:
-            twitter.unretweet(tweet.id)
         twitter.retweet(tweet.id)
         logging.info(f"{tweet.user.screen_name} さんによる以下のツイートをRTしました: ")
         logging.info(tweet.text)
