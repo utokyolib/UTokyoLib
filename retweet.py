@@ -23,7 +23,7 @@ tweets = [tweet for tweet in tweets if tweet.user.screen_name != "UTokyoLib_bot"
 tweets = [tweet for tweet in tweets if tweet.created_at >= datetime.today() - timedelta(hours=5)]
 
 # 開館・閉館に関するツイートに絞る
-tweets = [tweet for tweet in tweets if "開館" in tweet.text or "開室" in tweet.text or "閉館" in tweet.text or "閉室" in tweet.text]
+tweets = [tweet for tweet in tweets if "開館" in tweet.text or "開室" in tweet.text or "閉館" in tweet.text or "閉室" in tweet.text or "休館" in tweet.text or "休室" in tweet.text]
 
 # 最近の RT が上に来るようにする
 tweets.reverse()
