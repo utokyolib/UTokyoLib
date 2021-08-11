@@ -35,7 +35,7 @@ jobs:
       - name: Installation
         run: poetry install
       - name: Retweet
-        if: ${{ github.event_name == 'schedule' && github.event_name == 'workflow_dispatch' }}
+        if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
         run: poetry run python retweet.py
 
       - name: Notify Failure
