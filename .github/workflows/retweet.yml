@@ -9,6 +9,7 @@ on:
       - master
   schedule:
     - cron: '0 0-9 * * *' # 日本時間 9時~18時
+  workflow_dispatch:
 
 env:
   TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
@@ -34,5 +35,13 @@ jobs:
       - name: Installation
         run: poetry install
       - name: Retweet
-        if: ${{ github.event_name == 'schedule' }}
+        if: ${{ github.event_name == 'schedule' or github.event_name == 'workflow_dispatch' }}
         run: poetry run python retweet.py
+
+      - name: Notify Failure
+        if: failure()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
