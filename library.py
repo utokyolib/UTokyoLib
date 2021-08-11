@@ -20,7 +20,12 @@ def fetch_opening_info(libraryType, year=None, month=None, day=None):
     calendar_table = soup.find('table', {'class': 'lib_calendar'})
     for elem in calendar_table.find_all('td'):
         if elem.get_text().strip() == str(day):
-            style = elem.get('style')
+            outer_style = elem.get('style')
+
+            calendar_today_a = elem.find('a')
+            inner_style = calendar_today_a.get('style')
+            style = f"{outer_style} {inner_style}"
+
             break
 
     if not style:
