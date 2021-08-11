@@ -40,11 +40,11 @@ jobs:
       - name: Favorite
         run: poetry run python favorite.py
       - name: Tweet
-        if: ${{ github.event_name == 'schedule' }}
+        if: ${{ github.event_name == 'schedule' or github.event_name == 'workflow_dispatch' }}
         run: poetry run python main.py
 
       - name: Commit Files
-        if: ${{ github.event_name == 'schedule' }}
+        if: ${{ github.event_name == 'schedule' or github.event_name == 'workflow_dispatch' }}
         run: |
           bash update.sh
           git add -A
