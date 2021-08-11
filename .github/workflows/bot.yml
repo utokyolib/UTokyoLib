@@ -9,6 +9,7 @@ on:
       - master
   schedule:
     - cron: '0 22 * * *' # 日本時間 7時
+  workflow_dispatch:
 
 env:
   TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
