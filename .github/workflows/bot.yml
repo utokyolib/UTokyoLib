@@ -53,3 +53,11 @@ jobs:
           now=`TZ=JST-9 date`
           git commit -m "${now}"
           git push
+
+      - name: Notify Failure
+        if: failure()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
