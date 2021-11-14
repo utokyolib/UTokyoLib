@@ -1,4 +1,4 @@
-Last Update: Sun Nov 14 07:04:04 JST 2021
+Last Update: Mon Nov 15 07:03:55 JST 2021
 
 ## 注意 — GitHub Actions で Twitter ボットを運用する行為に関して
 
