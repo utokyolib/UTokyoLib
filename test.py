@@ -31,16 +31,16 @@ class TestLibraryMethods(unittest.TestCase):
         lib_num = 300300
 
         self.assertEqual(
-            ("短縮開館", "10:00-20:00"),
-            library.fetch_opening_info(lib_num, year=2021, month=7, day=1)
+            ("短縮開館（夏季・春季）", "9:00-20:00"),
+            library.fetch_opening_info(lib_num, year=2022, month=3, day=1)
         )
         self.assertEqual(
             ("短縮開館（土・日・祝日）", "10:00-19:00"),
-            library.fetch_opening_info(lib_num, year=2021, month=7, day=22)
+            library.fetch_opening_info(lib_num, year=2022, month=3, day=12)
         )
         self.assertEqual(
-            ("短縮開館（試験期間）", "9:30-20:00"),
-            library.fetch_opening_info(lib_num, year=2021, month=7, day=29)
+            ("閉館日", "閉館日"),
+            library.fetch_opening_info(lib_num, year=2022, month=3, day=15)
         )
 
     # 柏図書館
