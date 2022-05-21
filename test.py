@@ -10,20 +10,20 @@ class TestLibraryMethods(unittest.TestCase):
         lib_num = 100001
 
         self.assertEqual(
-            ("平日", "全館(Main and Annex) 9:00-22:30 ※在籍者のみ"),
-            library.fetch_opening_info(lib_num, year=2021, month=7, day=1)
+            ("土・日・祝日", "全館(Main and Annex) 9:00-19:00 ※在籍者のみ"),
+            library.fetch_opening_info(lib_num, year=2022, month=5, day=1)
         )
         self.assertEqual(
-            ("土・日・祝日", "全館(Main and Annex) 9:00-19:00 ※在籍者のみ"),
-            library.fetch_opening_info(lib_num, year=2021, month=7, day=22)
+            ("平日", "全館(Main and Annex) 9:00-22:30 ※非在籍者は予約制"),
+            library.fetch_opening_info(lib_num, year=2022, month=5, day=2)
         )
         self.assertEqual(
             ("本館休館(平日)", "別館(Annex) 9:00-22:30 ※在籍者のみ"),
-            library.fetch_opening_info(lib_num, year=2021, month=7, day=29)
+            library.fetch_opening_info(lib_num, year=2022, month=5, day=26)
         )
         self.assertEqual(
-            ("別館休館(平日)", "本館(Main bldg.) 9:00-22:30 ※在籍者のみ"),
-            library.fetch_opening_info(lib_num, year=2021, month=7, day=30)
+            ("別館休館(平日)", "本館(Main bldg.) 9:00-22:30 ※非在籍者は予約制"),
+            library.fetch_opening_info(lib_num, year=2022, month=5, day=27)
         )
 
     # 駒場図書館
