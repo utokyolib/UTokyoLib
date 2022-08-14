@@ -7,8 +7,6 @@ on:
   pull_request:
     branches:
       - master
-  schedule:
-    - cron: '0 0-9 * * *' # 日本時間 9時~18時
   workflow_dispatch:
 
 env:
