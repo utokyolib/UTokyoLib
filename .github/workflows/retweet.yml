@@ -8,7 +8,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '0 0-9 * * *' # 日本時間 9時~18時
+    - cron: '0 0-15 * * *' # 日本時間 9時~24時
   workflow_dispatch:
 
 env:
